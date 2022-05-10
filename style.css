@@ -92,3 +92,23 @@ hr{
     filter: invert(52%) sepia(59%) saturate(368%) hue-rotate(161deg) brightness(97%) contrast(95%);
 }
 
+footer{
+  background-color:#559AC8;
+  width:100%;
+  text-align: center;
+  padding:24px 0px;
+}
+footer p{
+
+    color:#FFFFFF;
+    line-height:17px;
+    font-size:14px;
+}
+footer span{
+    color:#FFD366;
+    font-size:14px;
+}
+footer .link{
+    text-decoration:none;
+    color:#FFD366;
+}
