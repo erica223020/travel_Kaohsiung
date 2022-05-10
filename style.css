@@ -1,0 +1,94 @@
+header{
+    background-image:url("https://hexschool.github.io/JavaScript_HomeWork/assets/the-urban-landscape-1698285.png");
+    background-repeat:no-repeat;
+    max-width: 100%; 
+    padding: 60px 0;
+    background-size: cover;
+    margin: 0 auto;
+    position:relative;
+}
+
+header .title{
+    font-size:40px;
+    color:#FFFFFF;
+    font-family:"PingFangTC-Regular";
+    letter-spacing:3.89px;
+    line-height:41px;
+    text-align: center;
+    margin-bottom:96px;
+}
+.choose{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction:column;
+    
+}
+.choose select{
+     background: rgba(255, 255, 255, 0.7);
+     border: 3px solid #FFFFFF;
+     border-radius: 3px;
+     width:452px;
+     font-size: 18px;
+     padding:10px 2px;
+     margin-bottom: 20px;
+}
+/*  熱門行政區------------ */
+.hotArea{
+    background-color: #FFFFFF;
+    position:absolute;
+    /* 層級在最上面*/
+    z-index:100;
+    top:320px;
+
+    padding:18px 146px 18px 51px;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);
+    border-radius: 5px;    
+    line-height: 21px;
+} 
+.hotArea button{
+    border-radius: 5px;
+    font-family: 'PingFangTC-Regular';
+    font-size: 20px;
+    border-style:none;
+    color:#FFFFFF;
+    line-height:21px;
+    padding:10px 22px;
+    margin:0 10px;
+}
+.hotArea button:hover{
+    border-radius: 20px;
+    box-shadow:1px 1px 1px 1px #cccccc;
+    /* 變化的速度 */
+    transition-duration:0.6s;
+}
+/*  嘗試nth-child(n) 選取器------------ */
+.hotArea button:nth-child(2){
+    background: #8A82CC;
+}
+.hotArea button:nth-child(3){
+    background-color: #FFA782;
+}
+.hotArea button:nth-child(4){
+    background-color: #F5D005;
+}
+.hotArea button:nth-child(5){
+    background-color:#559AC8;
+}
+hr{
+    border: 1px dashed #559AC8;
+    margin:150px 70px 20px 0;
+}
+.line a{
+    color:#559AC8;
+    position: absolute;
+    padding:5px;
+    top: 495px;
+    left: 50%;
+    /* 弄圓那個外框 */
+    border: 2px solid #559AC8;
+    border-radius:50%;
+    /* 用轉換網站https://www.zhangxinxu.com/sp/filter.html轉換出來的色號 */
+    filter: invert(52%) sepia(59%) saturate(368%) hue-rotate(161deg) brightness(97%) contrast(95%);
+}
+
