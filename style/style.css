@@ -110,3 +110,15 @@ footer .link{
     text-decoration:none;
     color:#FFD366;
 }
+
+.icon{
+    width: 18px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+.info p,.info img{
+      display: inline-block; 
+}

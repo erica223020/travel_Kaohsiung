@@ -32,6 +32,7 @@ function reqListener () {
 //將篩選完的陣列資料放入下拉式選單，並渲染網頁
         const areaLen = catchArea.length;
         const chooseArea = document.querySelector('.chooseArea');
+
         for (let i=0;areaLen>i;i++){
             let newOption = document.createElement('option');
             newOption.textContent = catchArea[i];
@@ -45,20 +46,59 @@ function reqListener () {
 }
 
 //增加監聽器，監聽下拉式選單的改變
-let chooseArea = document.querySelector('.chooseArea');
+const chooseArea = document.querySelector('.chooseArea');
+const resultName = document.querySelector('.resultName');
+const list = document.querySelector('.list');
+
 chooseArea.addEventListener('change',refreshPage,false);
 
 //下拉式選單改變後，篩選符合的資料，並顯示在頁面
 function refreshPage(e){
     let select = e.target.value;
+    let str = '';
     let areaItem = [];
+
+    resultName.textContent = select;
+
     for(let i=0;len>i;i++){
+      let item = 
+      `
+      <li>
+      <div class="pic" style="background: url('${dataObject[i].Picture1}')center no-repeat;background-size: 110%;">
+        <h2>${dataObject[i].Name}</h2>
+      </div>
+      <ul class="info">
+        <li class="area_time">
+          <img src="https://hexschool.github.io/JavaScript_HomeWork/assets/icons_clock.png" alt="icons_clock" class="clock icon">
+          <p>${dataObject[i].Opentime}</p>
+        </li>
+        <li class="area_add">
+          <img class="icon add" src="https://hexschool.github.io/JavaScript_HomeWork/assets/icons_pin.png" alt="icons_pin">
+          <p>${dataObject[i].Add}</p>
+        </li>
+        <li class="area_phone">
+          <img class="icon" src="https://hexschool.github.io/JavaScript_HomeWork/assets/icons_phone.png" alt="icons_phone">
+          <p>${dataObject[i].Tel}</p>
+        </li>
+        <li>
+          <img class="icon" src="https://hexschool.github.io/JavaScript_HomeWork/assets/icons_tag.png" alt="icons_tag">
+          <p>
+          ${dataObject[i].Ticketinfo}
+          </p>
+        </li>
+      </ul>
+    </li>
+      `;
+
       if (select == dataObject[i].Zone){
         areaItem.push(dataObject[i]);
-        alert(areaItem);
+        str = str + item;
       }
     }
+    list.innerHTML = str;
   }
+
+
 
 
 
