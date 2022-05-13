@@ -1,6 +1,7 @@
 //宣告空陣列存放區域、空的物件存放資料
 let areaArray = [];
-let dataObject = {} ;
+let dataObject = {};
+let len;
 
 //建立新的連線
 let requestURL = new XMLHttpRequest();
@@ -19,7 +20,7 @@ function reqListener () {
 
 //下拉式選單，將Zone的區域抓出來
         let catchArea = [];
-        let len = dataObject.length;
+        len = dataObject.length;
         for(let i=0;len>i;i++){
         catchArea.push(dataObject[i].Zone);
         }
@@ -37,7 +38,6 @@ function reqListener () {
             newOption.value = catchArea[i];
             chooseArea.appendChild(newOption);   
         }
-        refreshPage();
     }          
     else{
         alert("資料讀取錯誤");
@@ -55,10 +55,9 @@ function refreshPage(e){
     for(let i=0;len>i;i++){
       if (select == dataObject[i].Zone){
         areaItem.push(dataObject[i]);
+        alert(areaItem);
       }
     }
-    printData(areaItem);
-    pagination(areaItem,1);
   }
 
 
