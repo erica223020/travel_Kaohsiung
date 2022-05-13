@@ -33,12 +33,12 @@ header .title{
      padding:10px 2px;
      margin-bottom: 20px;
 }
+
 /*  熱門行政區------------ */
 .hotArea{
     background-color: #FFFFFF;
     position:absolute;
-    /* 層級在最上面*/
-    z-index:100;
+    z-index:100;/* 層級在最上面*/
     top:320px;
 
     padding:18px 146px 18px 51px;
@@ -58,10 +58,10 @@ header .title{
 }
 .hotArea button:hover{
     border-radius: 20px;
-    box-shadow:1px 1px 1px 1px #cccccc;
-    /* 變化的速度 */
-    transition-duration:0.6s;
+    box-shadow:1px 1px 1px 1px #cccccc;  
+    transition-duration:0.6s;/* 變化的速度 */
 }
+
 /*  嘗試nth-child(n) 選取器------------ */
 .hotArea button:nth-child(2){
     background: #8A82CC;
@@ -85,11 +85,9 @@ hr{
     padding:5px;
     top: 495px;
     left: 50%;
-    /* 弄圓那個外框 */
     border: 2px solid #559AC8;
-    border-radius:50%;
-    /* 用轉換網站https://www.zhangxinxu.com/sp/filter.html轉換出來的色號 */
-    filter: invert(52%) sepia(59%) saturate(368%) hue-rotate(161deg) brightness(97%) contrast(95%);
+    border-radius:50%;    /* 弄圓那個外框 */
+    filter: invert(52%) sepia(59%) saturate(368%) hue-rotate(161deg) brightness(97%) contrast(95%); /* 用轉換網站https://www.zhangxinxu.com/sp/filter.html轉換出來的色號 */
 }
 
 footer{
