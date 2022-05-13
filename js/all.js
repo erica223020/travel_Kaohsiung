@@ -28,24 +28,39 @@ function reqListener () {
         let dataSet = new Set(catchArea);
         catchArea = [...dataSet];//用...來組合(連接)陣列，後面必定接著一個陣列
 
-//將篩選完的陣列資料放入下拉式選單
-        let areaLen = catchArea.length;
-        let chooseArea = document.querySelector('.chooseArea');
+//將篩選完的陣列資料放入下拉式選單，並渲染網頁
+        const areaLen = catchArea.length;
+        const chooseArea = document.querySelector('.chooseArea');
         for (let i=0;areaLen>i;i++){
             let newOption = document.createElement('option');
             newOption.textContent = catchArea[i];
             newOption.value = catchArea[i];
-            chooseArea.appendChild(newOption);
-              
+            chooseArea.appendChild(newOption);   
         }
-    }
-
-      
-    
+        refreshPage();
+    }          
     else{
         alert("資料讀取錯誤");
     }
 }
+
+//增加監聽器，監聽下拉式選單的改變
+let chooseArea = document.querySelector('.chooseArea');
+chooseArea.addEventListener('change',refreshPage,false);
+
+//下拉式選單改變後，篩選符合的資料，並顯示在頁面
+function refreshPage(e){
+    let select = e.target.value;
+    let areaItem = [];
+    for(let i=0;len>i;i++){
+      if (select == dataObject[i].Zone){
+        areaItem.push(dataObject[i]);
+      }
+    }
+    printData(areaItem);
+    pagination(areaItem,1);
+  }
+
 
 
 
