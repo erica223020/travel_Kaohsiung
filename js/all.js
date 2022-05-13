@@ -39,18 +39,12 @@ function reqListener () {
             newOption.value = catchArea[i];
             chooseArea.appendChild(newOption);   
         }
+        chooseArea.addEventListener('change',refreshPage);
     }          
     else{
         alert("資料讀取錯誤");
     }
 }
-
-//增加監聽器，監聽下拉式選單的改變
-const chooseArea = document.querySelector('.chooseArea');
-const resultName = document.querySelector('.resultName');
-const list = document.querySelector('.list');
-
-chooseArea.addEventListener('change',refreshPage,false);
 
 //下拉式選單改變後，篩選符合的資料，並顯示在頁面
 function refreshPage(e){
@@ -58,8 +52,13 @@ function refreshPage(e){
     let str = '';
     let areaItem = [];
 
-    resultName.textContent = select;
+//增加監聽器，監聽下拉式選單的改變
+    const resultName = document.querySelector('.resultName');
+    const list = document.querySelector('.list');
 
+    resultName.textContent = select;
+    
+//結果放入UL
     for(let i=0;len>i;i++){
       let item = 
       `
@@ -83,8 +82,7 @@ function refreshPage(e){
         <li>
           <img class="icon" src="https://hexschool.github.io/JavaScript_HomeWork/assets/icons_tag.png" alt="icons_tag">
           <p>
-          ${dataObject[i].Ticketinfo}
-          </p>
+          ${dataObject[i].Ticketinfo}</p>
         </li>
       </ul>
     </li>
