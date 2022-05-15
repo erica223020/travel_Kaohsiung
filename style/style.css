@@ -101,6 +101,10 @@ header .title{
     padding:10px 22px;
     margin:0 10px;
 }
+.hotArea h3{
+    font-size:20px;
+    padding:10px;
+}
 .hotArea button:hover{
     border-radius: 20px;
     box-shadow:1px 1px 1px 1px #cccccc;  
@@ -156,6 +160,7 @@ footer .link{
     color:#FFD366;
 }
 
+/* JS新增區域 */
 .icon{
     width: 18px;
     height: 20px;
@@ -164,10 +169,38 @@ footer .link{
     align-items: center;
     margin: 5px;
 }
+.areaName{
+    font-size:20px;
+    color:#FFFFFF;
+    padding:150px 0 0 15px;
+    font-weight:700;
+}
 .list li .pic{
   height:180px;
+  width:350px;
   overflow: hidden;
+  margin:10px;
 }
 .info p,.info img{
-      display: inline-block; 
+    display: inline-block;
+}
+.area{
+    display: flex;
+    align-items:center;
+}
+.info p{
+    width:300px;
+}
+
+.resultName{
+    text-align: center;
+    font-size:30px;
+    padding:20px 0 30px 0;
+    font-weight: 700;
+    color:rgb(80, 88, 95);
+}
+.list{
+    display: flex;
+    justify-content:center;
+    flex-wrap:wrap;
 }

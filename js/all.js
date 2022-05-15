@@ -39,12 +39,15 @@ function reqListener () {
             newOption.value = catchArea[i];
             chooseArea.appendChild(newOption);   
         }
-        chooseArea.addEventListener('change',refreshPage);
     }          
     else{
         alert("資料讀取錯誤");
     }
 }
+
+//監聽下拉式選單的改變
+const chooseArea = document.querySelector('.chooseArea');
+chooseArea.addEventListener('change',refreshPage);
 
 //下拉式選單改變後，篩選符合的資料，並顯示在頁面
 function refreshPage(e){
@@ -52,34 +55,34 @@ function refreshPage(e){
     let str = '';
     let areaItem = [];
 
-//增加監聽器，監聽下拉式選單的改變
+//下拉式選單改變後，標題跟著改變
     const resultName = document.querySelector('.resultName');
     const list = document.querySelector('.list');
 
     resultName.textContent = select;
-    
+
 //結果放入UL
     for(let i=0;len>i;i++){
       let item = 
       `
       <li>
       <div class="pic" style="background: url('${dataObject[i].Picture1}')center no-repeat;background-size: 110%;">
-        <h2>${dataObject[i].Name}</h2>
+        <h2 class="areaName">${dataObject[i].Name}</h2>
       </div>
       <ul class="info">
-        <li class="area_time">
+        <li class="area_time area">
           <img src="https://hexschool.github.io/JavaScript_HomeWork/assets/icons_clock.png" alt="icons_clock" class="clock icon">
           <p>${dataObject[i].Opentime}</p>
         </li>
-        <li class="area_add">
+        <li class="area_add area">
           <img class="icon add" src="https://hexschool.github.io/JavaScript_HomeWork/assets/icons_pin.png" alt="icons_pin">
           <p>${dataObject[i].Add}</p>
         </li>
-        <li class="area_phone">
+        <li class="area_phone area">
           <img class="icon" src="https://hexschool.github.io/JavaScript_HomeWork/assets/icons_phone.png" alt="icons_phone">
           <p>${dataObject[i].Tel}</p>
         </li>
-        <li>
+        <li class="area">
           <img class="icon" src="https://hexschool.github.io/JavaScript_HomeWork/assets/icons_tag.png" alt="icons_tag">
           <p>
           ${dataObject[i].Ticketinfo}</p>
@@ -96,8 +99,27 @@ function refreshPage(e){
     list.innerHTML = str;
   }
 
+//熱門區按鈕的點選
+let hotArea = document.querySelector('.hotArea');
+hotArea.addEventListener('click',clickHotArea,false);
+
+function clickHotArea(e){
+  let chooseArea = document.querySelector('.chooseArea');
+
+//確定是點在按鈕上
+  if (e.target.nodeName !== "BUTTON"){
+    return;
+  }
+
+  let clickbtn = e.target.textContent;
+  chooseArea.value = clickbtn;
+  refreshPage();
+}
 
 
 
+//https://israynotarray.com/javascript/20190505/1432256317/  分頁製作
 
+//https://ithelp.ithome.com.tw/articles/10213237拆解
 
+//BMI https://ithelp.ithome.com.tw/articles/10237259
