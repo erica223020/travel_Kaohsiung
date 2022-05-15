@@ -15,7 +15,7 @@ requestURL.onload =
 //確認是否讀取到資料，並分析json內的資料
 function reqListener () {
     if(requestURL.status == 200){
-        let opendata = JSON.parse(requestURL.responseText);
+      let opendata = JSON.parse(requestURL.responseText);
         dataObject = opendata.result.records; //result.records是讀取資料所回傳的路徑
 
 //下拉式選單，將Zone的區域抓出來
@@ -109,13 +109,18 @@ function clickHotArea(e){
 //確定是點在按鈕上
   if (e.target.nodeName !== "BUTTON"){
     return;
+  }else{
+    let clickbtn = e.target.textContent;
+    chooseArea.value = clickbtn;
+    refreshPage(e);
   }
-
-  let clickbtn = e.target.textContent;
-  chooseArea.value = clickbtn;
-  refreshPage();
 }
 
+//製作分頁
+function pagination(opendata){
+  const dataTotal = opendata.length;
+  console.log(dataTotal)
+}
 
 
 //https://israynotarray.com/javascript/20190505/1432256317/  分頁製作
@@ -123,3 +128,5 @@ function clickHotArea(e){
 //https://ithelp.ithome.com.tw/articles/10213237拆解
 
 //BMI https://ithelp.ithome.com.tw/articles/10237259
+
+//威良 周
