@@ -204,3 +204,19 @@ footer .link{
     justify-content:center;
     flex-wrap:wrap;
 }
+.pageAll{
+    display: flex;
+    justify-content: center;
+}
+.pageAll .pageBtn{
+    border:1px solid;
+    width:30px;
+    line-height:30px;
+    text-align: center;
+    margin:10px;
+    font-size:20px;
+}
+.pageAll .pageBtn:hover{
+    background:#559AC8;
+    color:white;
+}

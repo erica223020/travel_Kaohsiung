@@ -2,6 +2,7 @@
 let areaArray = [];
 let dataObject = {};
 let len;
+let opendata;
 
 //建立新的連線
 let requestURL = new XMLHttpRequest();
@@ -15,7 +16,7 @@ requestURL.onload =
 //確認是否讀取到資料，並分析json內的資料
 function reqListener () {
     if(requestURL.status == 200){
-      let opendata = JSON.parse(requestURL.responseText);
+      opendata = JSON.parse(requestURL.responseText);
         dataObject = opendata.result.records; //result.records是讀取資料所回傳的路徑
 
 //下拉式選單，將Zone的區域抓出來
@@ -39,28 +40,37 @@ function reqListener () {
             newOption.value = catchArea[i];
             chooseArea.appendChild(newOption);   
         }
+        load();
     }          
     else{
         alert("資料讀取錯誤");
     }
 }
 
+//一開始呈現第一頁的內容、按照資料數量做分頁
+function load(){
+  refreshPage(1);
+}
+
 //監聽下拉式選單的改變
 const chooseArea = document.querySelector('.chooseArea');
-chooseArea.addEventListener('change',refreshPage);
+const list = document.querySelector('.list');
+chooseArea.addEventListener('change',load);
 
 //下拉式選單改變後，篩選符合的資料，並顯示在頁面
-function refreshPage(e){
-    let select = e.target.value;
-    let str = '';
+
+function refreshPage(){
+//清空陣列
     let areaItem = [];
+    list.innerHTML = '';//先清空內容
+    let select = chooseArea.value;
+    len = dataObject.length;
+    let str = '';
+
 
 //下拉式選單改變後，標題跟著改變
     const resultName = document.querySelector('.resultName');
-    const list = document.querySelector('.list');
-
     resultName.textContent = select;
-
 //結果放入UL
     for(let i=0;len>i;i++){
       let item = 
@@ -97,7 +107,17 @@ function refreshPage(e){
       }
     }
     list.innerHTML = str;
+  
+//製作分頁-計算按鈕數量
+   let pageAll = document.querySelector('.pageAll');
+   let btnNum = Math.ceil(areaItem.length/6);
+   let pageStr = '';
+  
+  for(let i = 0; i <btnNum; i++){
+    pageStr += `<li class="pageBtn">${i+1}</li>`;
   }
+    pageAll.innerHTML = pageStr;
+}
 
 //熱門區按鈕的點選
 let hotArea = document.querySelector('.hotArea');
@@ -112,21 +132,14 @@ function clickHotArea(e){
   }else{
     let clickbtn = e.target.textContent;
     chooseArea.value = clickbtn;
-    refreshPage(e);
+    refreshPage();
   }
-}
-
-//製作分頁
-function pagination(opendata){
-  const dataTotal = opendata.length;
-  console.log(dataTotal)
 }
 
 
 //https://israynotarray.com/javascript/20190505/1432256317/  分頁製作
 
-//https://ithelp.ithome.com.tw/articles/10213237拆解
-
+//拆解https://ithelp.ithome.com.tw/articles/10213237
 //BMI https://ithelp.ithome.com.tw/articles/10237259
 
 //威良 周
